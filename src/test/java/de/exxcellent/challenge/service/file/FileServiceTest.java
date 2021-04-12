@@ -23,11 +23,6 @@ class FileServiceTest {
     }
 
     @Test
-    void throwExceptionWrongData() {
-        assertThrows(Exception.class, () -> csvService.readFile("weatherWrongData.csv"));
-    }
-
-    @Test
     void returnNotNullList() {
         try {
             assertNotNull(csvService.readFile("weather.csv"));
