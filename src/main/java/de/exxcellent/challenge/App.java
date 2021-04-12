@@ -1,6 +1,7 @@
 package de.exxcellent.challenge;
 
 import de.exxcellent.challenge.exception.HeaderException;
+import de.exxcellent.challenge.service.football.FootballStatisticService;
 import de.exxcellent.challenge.service.weather.WeatherStatisticsService;
 
 import java.io.FileNotFoundException;
@@ -28,8 +29,11 @@ public final class App {
         System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
 
         try {
-            WeatherStatisticsService weatherStatisticsService = new WeatherStatisticsService("weather.csv");
-            System.out.printf("Day with smallest temperature spread : %s%n", weatherStatisticsService.dayWithSmallestTempSpread());
+            WeatherStatisticsService weatherService = new WeatherStatisticsService("weather.csv");
+            System.out.printf("Day with smallest temperature spread : %s%n", weatherService.dayWithSmallestTempSpread());
+
+            FootballStatisticService footballService = new FootballStatisticService("football.csv");
+            System.out.printf("Team with smallest goal spread       : %s%n", footballService.teamWithSmallestDistance());
         } catch (FileNotFoundException e) {
             System.err.println("File does not exist.");
         } catch (IOException e) {
